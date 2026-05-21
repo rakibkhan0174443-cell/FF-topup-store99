@@ -5,45 +5,65 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FF Top-up Store</title>
 <style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
 body{
   font-family:'Segoe UI',Arial,sans-serif;
   color:#fff;
   min-height:100vh;
-  padding:20px;
-  background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), 
-              url('https://images.unsplash.com/photo-1618005182384-a83a8bd57da3?q=80&w=1920') no-repeat center fixed !important;
-  background-size: cover !important;
+  padding:15px;
+  background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+              url('https://images.unsplash.com/photo-1618005182384-a83a8bd57da3?q=80&w=1920') no-repeat center fixed;
+  background-size: cover;
 }
 
 .container{
-  max-width: 600px;
+  max-width: 700px;
   margin: auto;
 }
 
-h1, h2{
+h1{
   text-align: center;
-  margin-bottom: 10px;
+  font-size: 28px;
+  margin-bottom: 15px;
+  text-shadow: 0 0 15px #ff6b00;
 }
 
-.sub-text{
+.glass-box{
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 15px 0;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+.glass-title{
   text-align: center;
-  font-size: 15px;
-  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.glass-sub{
+  text-align: center;
+  font-size: 14px;
   color: #ddd;
 }
 
 .diamond-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-  margin-top: 20px;
+  gap: 12px;
+  margin-top: 15px;
 }
 
 .diamond-box {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
   border: 2px solid #ff6b00;
   border-radius: 12px;
-  padding: 15px;
+  padding: 15px 10px;
   text-align: center;
   cursor: pointer;
   transition: 0.3s;
@@ -53,66 +73,80 @@ h1, h2{
 .diamond-box:hover {
   background: rgba(255, 107, 0, 0.3);
   transform: scale(1.05);
+  box-shadow: 0 0 20px #ff6b00;
 }
 
 .diamonds {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   color: #00d4ff;
   margin-bottom: 5px;
 }
 
 .price {
-  font-size: 18px;
+  font-size: 16px;
   color: #fff;
   font-weight: bold;
 }
 
 #orderForm{
   display: none;
-  background: rgba(0,0,0,0.8);
-  padding: 20px;
-  border-radius: 12px;
-  margin-top: 20px;
-  border: 2px solid #ff6b00;
 }
 
-#orderForm input{
+input, textarea{
   width: 100%;
   padding: 12px;
-  margin: 10px 0;
+  margin: 8px 0;
   border: none;
   border-radius: 8px;
-  font-size: 16px;
-  box-sizing: border-box;
+  font-size: 15px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  backdrop-filter: blur(5px);
 }
 
-#orderForm button{
+input::placeholder, textarea::placeholder{
+  color: #ccc;
+}
+
+.btn{
   width: 100%;
-  padding: 12px;
-  background: #ff6b00;
+  padding: 14px;
+  background: linear-gradient(90deg, #ff6b00, #ff9500);
   border: none;
   border-radius: 8px;
   color: #fff;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: bold;
   cursor: pointer;
   margin-top: 10px;
+  transition: 0.3s;
 }
 
-#orderForm button:hover{
-  background: #e55f00;
+.btn:hover{
+  transform: scale(1.02);
+  box-shadow: 0 0 15px #ff6b00;
 }
 
 .close-btn{
-  background: #ff0000 !important;
-  margin-top: 5px;
+  background: linear-gradient(90deg, #ff0000, #ff4444) !important;
 }
 
-@media(max-width: 500px){
+.nagad-info{
+  background: rgba(0, 200, 100, 0.2);
+  border: 1px solid #00c864;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+@media(max-width: 480px){
   .diamond-grid{
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
+  h1{ font-size: 24px; }
 }
 </style>
 </head>
@@ -121,78 +155,95 @@ h1, h2{
 <div class="container">
   <h1>🔥 FF Top-up Store</h1>
   
-  <h2>💎 UID Top-up</h2>
-  <p class="sub-text">ডায়মন্ড, মেম্বারশিপ, ইভো কিনো সস্তায়</p>
+  <div class="glass-box">
+    <div class="glass-title">💎 UID Top-up</div>
+    <div class="glass-sub">ডায়মন্ড, মেম্বারশিপ, ইভো কিনো সস্তায়</div>
+  </div>
   
-  <h2>Diamond Packages</h2>
-  <p class="sub-text">💎 আপনার পছন্দের প্যাকেজে ট্যাপ করুন</p>
-
-  <div class="diamond-grid">
+  <div class="glass-box">
+    <div class="glass-title">👑 Weekly / Monthly</div>
+    <div class="glass-sub">Weekly: 148৳ | Monthly: 725৳</div>
+  </div>
+  
+  <div class="glass-box">
+    <div class="glass-title">💎 Diamond Packages</div>
+    <div class="glass-sub">💎 আপনার পছন্দের প্যাকেজ ট্যাপ করে নিচে বক্সে UID দিন</div>
     
-    <div class="diamond-box" onclick="selectPackage('100 Diamond', '65')">
-      <div class="diamonds">💎 100</div>
-      <div class="price">৳65</div>
-    </div>
+    <div class="diamond-grid">
+      
+      <div class="diamond-box" onclick="selectPackage('100 Diamond', '65')">
+        <div class="diamonds">💎 100</div>
+        <div class="price">৳65</div>
+      </div>
 
-    <div class="diamond-box" onclick="selectPackage('355 Diamond', '215')">
-      <div class="diamonds">💎 355</div>
-      <div class="price">৳215</div>
-    </div>
+      <div class="diamond-box" onclick="selectPackage('355 Diamond', '215')">
+        <div class="diamonds">💎 355</div>
+        <div class="price">৳215</div>
+      </div>
 
-    <div class="diamond-box" onclick="selectPackage('505 Diamond', '310')">
-      <div class="diamonds">💎 505</div>
-      <div class="price">৳310</div>
-    </div>
+      <div class="diamond-box" onclick="selectPackage('505 Diamond', '310')">
+        <div class="diamonds">💎 505</div>
+        <div class="price">৳310</div>
+      </div>
 
-    <div class="diamond-box" onclick="selectPackage('725 Diamond', '458')">
-      <div class="diamonds">💎 725</div>
-      <div class="price">৳458</div>
-    </div>
+      <div class="diamond-box" onclick="selectPackage('725 Diamond', '458')">
+        <div class="diamonds">💎 725</div>
+        <div class="price">৳458</div>
+      </div>
 
-    <div class="diamond-box" onclick="selectPackage('1090 Diamond', '695')">
-      <div class="diamonds">💎 1090</div>
-      <div class="price">৳695</div>
-    </div>
+      <div class="diamond-box" onclick="selectPackage('1090 Diamond', '695')">
+        <div class="diamonds">💎 1090</div>
+        <div class="price">৳695</div>
+      </div>
 
-    <div class="diamond-box" onclick="selectPackage('1480 Diamond', '920')">
-      <div class="diamonds">💎 1480</div>
-      <div class="price">৳920</div>
-    </div>
+      <div class="diamond-box" onclick="selectPackage('1480 Diamond', '920')">
+        <div class="diamonds">💎 1480</div>
+        <div class="price">৳920</div>
+      </div>
 
-    <div class="diamond-box" onclick="selectPackage('2090 Diamond', '1310')">
-      <div class="diamonds">💎 2090</div>
-      <div class="price">৳1310</div>
-    </div>
+      <div class="diamond-box" onclick="selectPackage('2090 Diamond', '1310')">
+        <div class="diamonds">💎 2090</div>
+        <div class="price">৳1310</div>
+      </div>
 
-    <div class="diamond-box" onclick="selectPackage('2500 Diamond', '1550')">
-      <div class="diamonds">💎 2500</div>
-      <div class="price">৳1550</div>
-    </div>
+      <div class="diamond-box" onclick="selectPackage('2500 Diamond', '1550')">
+        <div class="diamonds">💎 2500</div>
+        <div class="price">৳1550</div>
+      </div>
 
-    <div class="diamond-box" onclick="selectPackage('3010 Diamond', '1885')">
-      <div class="diamonds">💎 3010</div>
-      <div class="price">৳1885</div>
-    </div>
+      <div class="diamond-box" onclick="selectPackage('3010 Diamond', '1885')">
+        <div class="diamonds">💎 3010</div>
+        <div class="price">৳1885</div>
+      </div>
 
-    <div class="diamond-box" onclick="selectPackage('5060 Diamond', '3145')">
-      <div class="diamonds">💎 5060</div>
-      <div class="price">৳3145</div>
-    </div>
+      <div class="diamond-box" onclick="selectPackage('5060 Diamond', '3145')">
+        <div class="diamonds">💎 5060</div>
+        <div class="price">৳3145</div>
+      </div>
 
-    <div class="diamond-box" onclick="selectPackage('10000 Diamond', '6100')">
-      <div class="diamonds">💎 10000</div>
-      <div class="price">৳6100</div>
-    </div>
+      <div class="diamond-box" onclick="selectPackage('10000 Diamond', '6100')">
+        <div class="diamonds">💎 10000</div>
+        <div class="price">৳6100</div>
+      </div>
 
+    </div>
   </div>
 
   <!-- Order Form -->
-  <div id="orderForm">
-    <h3 id="selectedPackage">Package</h3>
-    <input type="text" id="uid" placeholder="Free Fire UID লিখুন" required>
-    <input type="text" id="playerName" placeholder="Player Name লিখুন" required>
-    <button onclick="sendOrder()">Order Confirm করুন</button>
-    <button class="close-btn" onclick="closeForm()">Cancel</button>
+  <div id="orderForm" class="glass-box">
+    <h3 id="selectedPackage" style="text-align:center; margin-bottom:15px;">Package</h3>
+    
+    <div class="nagad-info">
+      নগদ : 01819811370<br>
+      সেন্ড মানি করে Transaction ID দিন
+    </div>
+    
+    <input type="text" id="uid" placeholder="Free Fire UID" required>
+    <input type="text" id="playerName" placeholder="Player Name" required>
+    <input type="text" id="txnId" placeholder="Transaction ID" required>
+    
+    <button class="btn" onclick="sendOrder()">Order Confirm করুন</button>
+    <button class="btn close-btn" onclick="closeForm()">Cancel</button>
   </div>
 </div>
 
@@ -206,25 +257,27 @@ function selectPackage(diamonds, price){
   selectedPrice = price;
   document.getElementById('selectedPackage').innerText = diamonds + " - ৳" + price;
   document.getElementById('orderForm').style.display = 'block';
-  window.scrollTo(0, document.body.scrollHeight);
+  window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});
 }
 
 function closeForm(){
   document.getElementById('orderForm').style.display = 'none';
   document.getElementById('uid').value = '';
   document.getElementById('playerName').value = '';
+  document.getElementById('txnId').value = '';
 }
 
 function sendOrder(){
-  let uid = document.getElementById('uid').value;
-  let playerName = document.getElementById('playerName').value;
+  let uid = document.getElementById('uid').value.trim();
+  let playerName = document.getElementById('playerName').value.trim();
+  let txnId = document.getElementById('txnId').value.trim();
   
-  if(uid == "" || playerName == ""){
-    alert("UID এবং Player Name দুইটাই লিখুন!");
+  if(uid == "" || playerName == "" || txnId == ""){
+    alert("সব ঘর পূরণ করুন!");
     return;
   }
   
-  let msg = `🔥 নতুন অর্ডার 🔥\n\nPackage: ${selectedDiamond}\nPrice: ৳${selectedPrice}\nUID: ${uid}\nPlayer Name: ${playerName}`;
+  let msg = `🔥 নতুন অর্ডার 🔥\n\nPackage: ${selectedDiamond}\nPrice: ৳${selectedPrice}\nUID: ${uid}\nPlayer Name: ${playerName}\nTransaction ID: ${txnId}`;
   
   alert("অর্ডার কনফার্ম হচ্ছে... WhatsApp এ নিয়ে যাচ্ছি!");
   
@@ -237,8 +290,3 @@ function sendOrder(){
 
 </body>
 </html>
-
-
-  
-  
-      
