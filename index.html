@@ -52,6 +52,16 @@ h1{
   color: #ddd;
 }
 
+.clickable{
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.clickable:hover{
+  background: rgba(255, 107, 0, 0.2);
+  transform: scale(1.02);
+}
+
 .diamond-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -155,14 +165,14 @@ input::placeholder, textarea::placeholder{
 <div class="container">
   <h1>🔥 FF Top-up Store</h1>
   
-  <div class="glass-box">
-    <div class="glass-title">💎 UID Top-up</div>
-    <div class="glass-sub">ডায়মন্ড, মেম্বারশিপ, ইভো কিনো সস্তায়</div>
+  <div class="glass-box clickable" onclick="selectPackage('Weekly Membership', '148')">
+    <div class="glass-title">👑 Weekly Membership</div>
+    <div class="glass-sub">Price: 148৳</div>
   </div>
   
-  <div class="glass-box">
-    <div class="glass-title">👑 Weekly / Monthly</div>
-    <div class="glass-sub">Weekly: 148৳ | Monthly: 725৳</div>
+  <div class="glass-box clickable" onclick="selectPackage('Monthly Membership', '723')">
+    <div class="glass-title">👑 Monthly Membership</div>
+    <div class="glass-sub">Price: 723৳</div>
   </div>
   
   <div class="glass-box">
@@ -250,12 +260,12 @@ input::placeholder, textarea::placeholder{
 <script>
 let selectedDiamond = "";
 let selectedPrice = "";
-let whatsapp = "601129263580"; // তোমার WhatsApp নাম্বার
+let whatsapp = "601129263580";
 
-function selectPackage(diamonds, price){
-  selectedDiamond = diamonds;
+function selectPackage(item, price){
+  selectedDiamond = item;
   selectedPrice = price;
-  document.getElementById('selectedPackage').innerText = diamonds + " - ৳" + price;
+  document.getElementById('selectedPackage').innerText = item + " - ৳" + price;
   document.getElementById('orderForm').style.display = 'block';
   window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});
 }
